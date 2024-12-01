@@ -1,0 +1,26 @@
+{
+  "name": "api-media-service",
+  "version": "1.0.0",
+  "description": "API backend que permite o upload de arquivos de vídeo e áudio,realiza o processamento básico desses arquivos e fornece uma interface para acessar os resultados do processamento.",
+  "main": "app.js",
+  "scripts": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sukuasoft/api-media-service.git"
+  },
+  "keywords": [
+    "api",
+    "backend",
+    "media",
+    "service",
+    "upload",
+    "process"
+  ],
+  "author": "Sukuasoft",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sukuasoft/api-media-service/issues"
+  },
+  "homepage": "https://github.com/sukuasoft/api-media-service#readme"
+}
