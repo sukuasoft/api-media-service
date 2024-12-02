@@ -11,14 +11,14 @@ async function GetAll(request: Request, response: Response<ApiResponse>) {
   const files = (await prisma.file.findMany()).map((file) => {
     const _f: any = {
       ...file,
-      download_url: `${getHostDomain()}/files/${file.id}/download`,
-      short_file: `${getHostDomain()}/files/${file.id}/short_file`,
+      download_url: `${getHostDomain()}/api/v1/files/${file.id}/download`,
+      short_file: `${getHostDomain()}/api/v1/files/${file.id}/short_file`,
     };
 
     if (file.type == TypeMedia.VIDEO) {
-      _f.thumbnail = `${getHostDomain()}/files/${file.id}/thumbnail`;
+      _f.thumbnail = `${getHostDomain()}/api/v1/files/${file.id}/thumbnail`;
     } else if (file.type == TypeMedia.AUDIO) {
-      _f.file_converted = `${getHostDomain()}/files/${file.id}/converted`;
+      _f.file_converted = `${getHostDomain()}/api/v1/files/${file.id}/converted`;
     }
 
     return _f;
@@ -42,14 +42,14 @@ async function GetId(request: Request, response: Response<ApiResponse>) {
   if (file) {
     const _file: any = {
       ...file,
-      download_url: `${getHostDomain()}/files/${file.id}/download`,
-      short_file: `${getHostDomain()}/files/${file.id}/short_file`,
+      download_url: `${getHostDomain()}/api/v1/files/${file.id}/download`,
+      short_file: `${getHostDomain()}/api/v1/files/${file.id}/short_file`,
     };
 
     if (file.type == TypeMedia.VIDEO) {
-      _file.thumbnail = `${getHostDomain()}/files/${file.id}/thumbnail`;
+      _file.thumbnail = `${getHostDomain()}/api/v1/files/${file.id}/thumbnail`;
     } else if (file.type == TypeMedia.AUDIO) {
-      _file.file_converted = `${getHostDomain()}/files/${file.id}/converted`;
+      _file.file_converted = `${getHostDomain()}/api/v1/files/${file.id}/converted`;
     }
 
     response.status(200).json({
