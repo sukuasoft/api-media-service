@@ -75,45 +75,32 @@ async function POST(request: Request, response: Response<ApiResponse>) {
           internalError(response);
           return;
         }
+      } else if (mimeType.type == TypeMedia.AUDIO) {
+        let toExtension = "";
+        if (mimeType.extension == "mp3") {
+          toExtension = "wav";
+        } else {
+          toExtension = "mp3";
+        }
 
-
-        
+        if (
+          !(await new Promise((resolve) => {
+            ffmpeg(filePathTemp)
+              .toFormat(toExtension)
+              .output(path.join(rootTempDirFile, `converted.${toExtension}`))
+              .on("end", () => {
+                resolve(true);
+              })
+              .on("error", () => {
+                resolve(false);
+              })
+              .run();
+          }))
+        ) {
+          internalError(response);
+          return;
+        }
       }
-
-      else if (mimeType.type == TypeMedia.AUDIO){
-
-          let toExtension = '';
-          if (mimeType.extension == 'mp3') {
-            toExtension='wav';
-          }
-          else{
-            toExtension= 'mp3';
-          }
-
-          if (
-            !(await new Promise((resolve) => {
-              ffmpeg(filePathTemp).toFormat(toExtension)
-                .output(
-                  path.join(
-                    rootTempDirFile,
-                    `converted.${toExtension}`
-                  )
-                )
-                .on("end", () => {
-                  resolve(true);
-                })
-                .on("error", () => {
-    
-                  resolve(false);
-                }).run();
-            }))
-          ) {
-            internalError(response);
-            return;
-          }
-        
-      }
-
 
       if (
         !(await new Promise((resolve) => {
@@ -123,16 +110,16 @@ async function POST(request: Request, response: Response<ApiResponse>) {
             .output(
               path.join(
                 rootTempDirFile,
-                `short.${getExtensionFile(file.name)}`
-              )
+                `short.${getExtensionFile(file.name)}`,
+              ),
             )
             .on("end", () => {
               resolve(true);
             })
             .on("error", () => {
-
               resolve(false);
-            }).run();
+            })
+            .run();
         }))
       ) {
         internalError(response);

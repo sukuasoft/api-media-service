@@ -9,7 +9,7 @@ import { TypeMedia } from "../types/enums/typeMediaEnum";
 export function fileRequestValidation(
   request: Request,
   response: Response<ApiResponse>,
-  next: NextFunction
+  next: NextFunction,
 ) {
   // Validação da existência de ficheiros
   if (
@@ -40,13 +40,13 @@ export function fileRequestValidation(
         if (mimeType.type == TypeMedia.AUDIO) {
           if (!(file.size <= audioSizeLimiter || audioSizeLimiter == 0)) {
             uploadsError.push(
-              `File is very large. The minimum is ${filesize(audioSizeLimiter)}`
+              `File is very large. The minimum is ${filesize(audioSizeLimiter)}`,
             );
           }
         } else if (mimeType.type == TypeMedia.VIDEO) {
           if (!(file.size <= videoSizeLimiter || videoSizeLimiter == 0)) {
             uploadsError.push(
-              `File is very large. The minimum is ${filesize(videoSizeLimiter)}`
+              `File is very large. The minimum is ${filesize(videoSizeLimiter)}`,
             );
           }
         }
@@ -58,17 +58,16 @@ export function fileRequestValidation(
     }
   } else {
     uploadsError.push(
-      "Not allowed to upload more than one file at the same time"
+      "Not allowed to upload more than one file at the same time",
     );
   }
 
-  if (uploadsError.length > 0){
+  if (uploadsError.length > 0) {
     response.status(400).json({
-        success:false, 
-        message:uploadsError.join('. ')
-    })
-return;
+      success: false,
+      message: uploadsError.join(". "),
+    });
+    return;
   }
   next();
-  
 }

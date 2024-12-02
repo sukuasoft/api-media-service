@@ -78,7 +78,7 @@ async function GetThumbnail(request: Request, response: Response<ApiResponse>) {
       const thumbnailFile = path.join(
         pathMediaStorage,
         file.id,
-        "thumbnail.jpg"
+        "thumbnail.jpg",
       );
       response.download(thumbnailFile);
     } else {
@@ -91,7 +91,7 @@ async function GetThumbnail(request: Request, response: Response<ApiResponse>) {
 
 async function GetFileDownload(
   request: Request,
-  response: Response<ApiResponse>
+  response: Response<ApiResponse>,
 ) {
   const { id } = request.params;
 
@@ -111,7 +111,7 @@ async function GetFileDownload(
 
 async function GetFileConverted(
   request: Request,
-  response: Response<ApiResponse>
+  response: Response<ApiResponse>,
 ) {
   const { id } = request.params;
 
@@ -133,7 +133,7 @@ async function GetFileConverted(
       const convertedFile = path.join(
         pathMediaStorage,
         file.id,
-        `converted.${convertedExtension}`
+        `converted.${convertedExtension}`,
       );
       response.download(convertedFile);
     } else {
@@ -144,28 +144,26 @@ async function GetFileConverted(
   }
 }
 
+async function GetShortFile(request: Request, response: Response<ApiResponse>) {
+  const { id } = request.params;
 
-async function GetShortFile(
-    request: Request,
-    response: Response<ApiResponse>
-  ) {
-    const { id } = request.params;
-  
-    const file = await prisma.file.findFirst({
-      where: {
-        id: id,
-      },
-    });
-  
-    if (file) {
-      const filePath = path.join(pathMediaStorage, file.id,
-       'short.' +getExtensionFile(file.name)
-      );
-      response.download(filePath);
-    } else {
-      response.sendStatus(404);
-    }
+  const file = await prisma.file.findFirst({
+    where: {
+      id: id,
+    },
+  });
+
+  if (file) {
+    const filePath = path.join(
+      pathMediaStorage,
+      file.id,
+      "short." + getExtensionFile(file.name),
+    );
+    response.download(filePath);
+  } else {
+    response.sendStatus(404);
   }
+}
 
 const filesController = {
   GetAll,
@@ -173,7 +171,7 @@ const filesController = {
   GetThumbnail,
   GetFileDownload,
   GetFileConverted,
-  GetShortFile
+  GetShortFile,
 };
 
 export default filesController;

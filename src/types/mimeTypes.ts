@@ -1,5 +1,5 @@
 export interface MimeTypes {
-    type:string,
-    name:string, 
-    extension:string
+  type: string;
+  name: string;
+  extension: string;
 }
