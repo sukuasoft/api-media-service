@@ -1,11 +1,11 @@
-import { Request, Response } from "express";
+import { Request, Response } from 'express';
 
-import { ApiResponse } from "../types/apiResponse";
-import { prisma } from "../prisma";
-import { getExtensionFile, pathMediaStorage } from "../utils/files";
-import path from "path";
-import { TypeMedia } from "../types/enums/typeMediaEnum";
-import getHostDomain from "../utils/domain";
+import { ApiResponse } from '../types/apiResponse';
+import { prisma } from '../prisma';
+import { getExtensionFile, pathMediaStorage } from '../utils/files';
+import path from 'path';
+import { TypeMedia } from '../types/enums/typeMediaEnum';
+import getHostDomain from '../utils/domain';
 
 async function GetAll(request: Request, response: Response<ApiResponse>) {
   const files = (await prisma.file.findMany()).map((file) => {
@@ -78,7 +78,7 @@ async function GetThumbnail(request: Request, response: Response<ApiResponse>) {
       const thumbnailFile = path.join(
         pathMediaStorage,
         file.id,
-        "thumbnail.jpg",
+        'thumbnail.jpg',
       );
       response.download(thumbnailFile);
     } else {
@@ -123,11 +123,11 @@ async function GetFileConverted(
 
   if (file) {
     if (file.type == TypeMedia.AUDIO) {
-      let convertedExtension = "";
-      if (getExtensionFile(file.name) == "mp3") {
-        convertedExtension = "wav";
+      let convertedExtension = '';
+      if (getExtensionFile(file.name) == 'mp3') {
+        convertedExtension = 'wav';
       } else {
-        convertedExtension = "mp3";
+        convertedExtension = 'mp3';
       }
 
       const convertedFile = path.join(
@@ -157,7 +157,7 @@ async function GetShortFile(request: Request, response: Response<ApiResponse>) {
     const filePath = path.join(
       pathMediaStorage,
       file.id,
-      "short." + getExtensionFile(file.name),
+      'short.' + getExtensionFile(file.name),
     );
     response.download(filePath);
   } else {

@@ -1,6 +1,6 @@
-import dotEnv from "dotenv";
+import dotEnv from 'dotenv';
 dotEnv.config();
-import { initServer } from "./server";
+import { initServer } from './server';
 
 // Iniciar o servidor
 initServer();

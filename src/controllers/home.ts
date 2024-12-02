@@ -1,10 +1,10 @@
-import { Request, Response } from "express";
-import { ApiResponse } from "../types/apiResponse";
+import { Request, Response } from 'express';
+import { ApiResponse } from '../types/apiResponse';
 
 function GET(request: Request, response: Response<ApiResponse>) {
   response.status(200).json({
     success: true,
-    message: "Server running...",
+    message: 'Server running...',
   });
 }
 

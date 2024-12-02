@@ -1,10 +1,10 @@
-import { Request, Response, NextFunction } from "express";
-import { ApiResponse } from "../types/apiResponse";
-import { getExtensionFile } from "../utils/files";
-import { filesize } from "filesize";
+import { Request, Response, NextFunction } from 'express';
+import { ApiResponse } from '../types/apiResponse';
+import { getExtensionFile } from '../utils/files';
+import { filesize } from 'filesize';
 
-import { validsMimeTypes } from "../utils/mimeTypes";
-import { TypeMedia } from "../types/enums/typeMediaEnum";
+import { validsMimeTypes } from '../utils/mimeTypes';
+import { TypeMedia } from '../types/enums/typeMediaEnum';
 
 export function fileRequestValidation(
   request: Request,
@@ -19,14 +19,14 @@ export function fileRequestValidation(
   ) {
     response.status(400).json({
       success: false,
-      message: "Missing file",
+      message: 'Missing file',
     });
     return;
   }
 
   // Limites de tipos de midea
-  const audioSizeLimiter = parseInt(process.env.MAX_LENGHT_AUDIO ?? "0");
-  const videoSizeLimiter = parseInt(process.env.MAX_LENGHT_VIDEO ?? "0");
+  const audioSizeLimiter = parseInt(process.env.MAX_LENGHT_AUDIO ?? '0');
+  const videoSizeLimiter = parseInt(process.env.MAX_LENGHT_VIDEO ?? '0');
 
   const uploadsError = [];
 
@@ -58,14 +58,14 @@ export function fileRequestValidation(
     }
   } else {
     uploadsError.push(
-      "Not allowed to upload more than one file at the same time",
+      'Not allowed to upload more than one file at the same time',
     );
   }
 
   if (uploadsError.length > 0) {
     response.status(400).json({
       success: false,
-      message: uploadsError.join(". "),
+      message: uploadsError.join('. '),
     });
     return;
   }

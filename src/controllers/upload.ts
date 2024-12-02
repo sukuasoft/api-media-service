@@ -1,19 +1,19 @@
-import { Request, Response } from "express";
-import { ApiResponse } from "../types/apiResponse";
-import { prisma } from "../prisma";
-import { v4 as uuidv4 } from "uuid";
-import { mkdir, writeFile, rename } from "fs/promises";
-import path from "path";
+import { Request, Response } from 'express';
+import { ApiResponse } from '../types/apiResponse';
+import { prisma } from '../prisma';
+import { v4 as uuidv4 } from 'uuid';
+import { mkdir, writeFile, rename } from 'fs/promises';
+import path from 'path';
 
 import {
   getExtensionFile,
   pathMediaStorage,
   pathTempStorage,
-} from "../utils/files";
-import ffmpeg from "fluent-ffmpeg";
-import { internalError } from "../errors";
-import { validsMimeTypes } from "../utils/mimeTypes";
-import { TypeMedia } from "../types/enums/typeMediaEnum";
+} from '../utils/files';
+import ffmpeg from 'fluent-ffmpeg';
+import { internalError } from '../errors';
+import { validsMimeTypes } from '../utils/mimeTypes';
+import { TypeMedia } from '../types/enums/typeMediaEnum';
 
 async function POST(request: Request, response: Response<ApiResponse>) {
   const file = request.files!.file;
@@ -61,13 +61,13 @@ async function POST(request: Request, response: Response<ApiResponse>) {
             ffmpeg(filePathTemp)
               .thumbnail({
                 timestamps: [1],
-                filename: "thumbnail.jpg",
+                filename: 'thumbnail.jpg',
                 folder: rootTempDirFile,
               })
-              .on("end", () => {
+              .on('end', () => {
                 resolve(true);
               })
-              .on("error", () => {
+              .on('error', () => {
                 resolve(false);
               });
           }))
@@ -76,11 +76,11 @@ async function POST(request: Request, response: Response<ApiResponse>) {
           return;
         }
       } else if (mimeType.type == TypeMedia.AUDIO) {
-        let toExtension = "";
-        if (mimeType.extension == "mp3") {
-          toExtension = "wav";
+        let toExtension = '';
+        if (mimeType.extension == 'mp3') {
+          toExtension = 'wav';
         } else {
-          toExtension = "mp3";
+          toExtension = 'mp3';
         }
 
         if (
@@ -88,10 +88,10 @@ async function POST(request: Request, response: Response<ApiResponse>) {
             ffmpeg(filePathTemp)
               .toFormat(toExtension)
               .output(path.join(rootTempDirFile, `converted.${toExtension}`))
-              .on("end", () => {
+              .on('end', () => {
                 resolve(true);
               })
-              .on("error", () => {
+              .on('error', () => {
                 resolve(false);
               })
               .run();
@@ -105,7 +105,7 @@ async function POST(request: Request, response: Response<ApiResponse>) {
       if (
         !(await new Promise((resolve) => {
           ffmpeg(filePathTemp)
-            .setStartTime("00:00:00")
+            .setStartTime('00:00:00')
             .setDuration(metadados.duration > 30 ? 30 : metadados.duration)
             .output(
               path.join(
@@ -113,10 +113,10 @@ async function POST(request: Request, response: Response<ApiResponse>) {
                 `short.${getExtensionFile(file.name)}`,
               ),
             )
-            .on("end", () => {
+            .on('end', () => {
               resolve(true);
             })
-            .on("error", () => {
+            .on('error', () => {
               resolve(false);
             })
             .run();
@@ -144,7 +144,7 @@ async function POST(request: Request, response: Response<ApiResponse>) {
 
       response.status(201).json({
         success: true,
-        message: "File uploaded",
+        message: 'File uploaded',
         data: {
           id: File.id,
           createdAt: File.createdAt.toISOString(),

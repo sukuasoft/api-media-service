@@ -1,6 +1,6 @@
-import express, { Express } from "express";
-import { generateRoutes } from "./routes";
-import fileUpload from "express-fileupload";
+import express, { Express } from 'express';
+import { generateRoutes } from './routes';
+import fileUpload from 'express-fileupload';
 
 export function initServer() {
   const PORT = process.env.PORT ?? 5533;
