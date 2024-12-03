@@ -24,6 +24,13 @@ Após isto existem algumas etapas para base de dados estar configurada:
 2. `npx prisma generate` - Rode este comando para permite que o projecto posso gerar os arquivos necessário para interagir com base de dados
 
 
+### Processamento de mídia
+Este projecto utiliza a biblioteca [Fluent-FFMPEG](https://www.npmjs.com/package/fluent-ffmpeg) para o processamento das mídias carregadas na API. E para seu funcionamento correcto, devemos configurar algumas coisas. Primeiramnete baixar `ffmpeg` e o `ffprobe`.
+- ffmpeg é uma ferramenta de código aberto para processamento de áudio e vídeo.
+- ffprobe é uma ferramenta complementar ao FFmpeg, usada para inspecionar informações detalhadas sobre arquivos de mídia. 
+
+ Baixa [aqui](https://ffmpeg.org/download.html) os binários do `ffmpeg` e `ffprobe` e define na variável PATH do sistema.
+
 ## 2. Execução
 
 Após toda este configuração o projecto pode rodar em modo de produção ou desenvolvimento.
