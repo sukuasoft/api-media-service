@@ -59,3 +59,146 @@ O projecto utiliza o prettier para formatação do código podes facilmente ante
 ## 4. Documentação
 
 A documentação da API pode ser acessada por meio do endereço localhost e porta defina na variável de ambiente. Ex: [http://localhost:5533](http://localhost:5533)
+
+
+## 5. Exemplos de uso
+
+#### 1. Rota Inicial da API
+**Método:** `GET`  
+**URL:** `/api/v1`
+
+#### Resposta Exemplo
+```json
+{
+  "sucess": true,
+  "message": "API Server running..."
+}
+```
+
+#### 2. Carregar Mídia
+**Método:** `POST`  
+**URL:** `/api/v1/upload`
+
+#### Corpo da Requisição
+```plaintext
+Content-Type: multipart/form-data
+
+{
+  "file": [file-to-upload]
+}
+```
+```json
+{
+  "sucess": true,
+  "message": "File Uploaded",
+  "data": {
+    "id": "4353534-353435-3432jsd",
+    "createdAt": "2022-12-02"
+  }
+}
+```
+
+
+#### 3. Pegar Todos Ficheiros Carregados
+**Método:** `GET`  
+**URL:** `/api/v1/files`
+
+#### Resposta Exemplo
+```json
+{
+  "sucess": true,
+  "data": [
+    {
+      "id": "a8ab667c-149d-4970-887e-ce83056aabfd",
+      "name": "Oruam – Rolé na Favela de Nave (feat. Didi,Dj Lc da Roça,MC K9,MC Smith).mp3",
+      "type": "audio",
+      "size": 5858200,
+      "duration": 193.044898,
+      "mimetype": "audio/mpeg",
+      "createdAt": "2024-12-02T19:27:09.374Z",
+      "download_url": "http://localhost:5533/api/v1/files/a8ab667c-149d-4970-887e-ce83056aabfd/download",
+      "short_file": "http://localhost:5533/api/v1/files/a8ab667c-149d-4970-887e-ce83056aabfd/short_file",
+      "file_converted": "http://localhost:5533/api/v1/files/a8ab667c-149d-4970-887e-ce83056aabfd/converted"
+    },
+    {
+      "id": "86ea1333-bc62-4995-9c24-79b5788b01d5",
+      "name": "Cópia de Nome.mp4",
+      "type": "video",
+      "size": 553683,
+      "duration": 5,
+      "mimetype": "video/mp4",
+      "createdAt": "2024-12-02T19:28:15.440Z",
+      "download_url": "http://localhost:5533/api/v1/files/86ea1333-bc62-4995-9c24-79b5788b01d5/download",
+      "short_file": "http://localhost:5533/api/v1/files/86ea1333-bc62-4995-9c24-79b5788b01d5/short_file",
+      "thumbnail": "http://localhost:5533/api/v1/files/86ea1333-bc62-4995-9c24-79b5788b01d5/thumbnail"
+    }
+  ]
+}
+```
+
+
+#### 4. Pegar Ficheiro Carregado
+**Método:** `GET`  
+**URL:** `/api/v1/files/{id}`
+
+#### Parâmetros
+- `id` (requerido): **ID do arquivo**.
+
+#### Resposta Exemplo
+```json
+{
+  "sucess": true,
+  "data": {
+    "id": "a8ab667c-149d-4970-887e-ce83056aabfd",
+    "name": "Oruam – Rolé na Favela de Nave (feat. Didi,Dj Lc da Roça,MC K9,MC Smith).mp3",
+    "type": "audio",
+    "size": 5858200,
+    "duration": 193.044898,
+    "mimetype": "audio/mpeg",
+    "createdAt": "2024-12-02T19:27:09.374Z",
+    "download_url": "http://localhost:5533/api/v1/files/a8ab667c-149d-4970-887e-ce83056aabfd/download",
+    "short_file": "http://localhost:5533/api/v1/files/a8ab667c-149d-4970-887e-ce83056aabfd/short_file",
+    "file_converted": "http://localhost:5533/api/v1/files/a8ab667c-149d-4970-887e-ce83056aabfd/converted"
+  }
+}
+```
+
+#### 5. Pegar Thumbnail do Ficheiro Carregado
+**Método:** `GET`  
+**URL:** `/api/v1/files/{id}/thumbnail`
+
+#### Parâmetros
+- `id` (requerido): **ID do arquivo**.
+
+#### Resposta Exemplo
+- Binary File
+
+#### 6. Baixar Ficheiro Carregado
+**Método:** `GET`  
+**URL:** `/api/v1/files/{id}/download`
+
+#### Parâmetros
+- `id` (requerido): **ID do arquivo**.
+
+#### Resposta Exemplo
+- Binary File
+
+#### 7. Baixar Ficheiro Convertido
+**Método:** `GET`  
+**URL:** `/api/v1/files/{id}/converted`
+
+#### Parâmetros
+- `id` (requerido): **ID do arquivo**.
+
+#### Resposta Exemplo
+- Binary File
+
+#### 8. Baixar Ficheiro Curto
+**Método:** `GET`  
+**URL:** `/api/v1/files/{id}/short_file`
+
+#### Parâmetros
+- `id` (requerido): **ID do arquivo**.
+
+#### Resposta Exemplo
+- Binary File
