@@ -9,6 +9,7 @@ import getHostDomain from '../utils/domain';
 
 async function GetAll(request: Request, response: Response<ApiResponse>) {
   const files = (await prisma.file.findMany()).map((file) => {
+    
     const _f: any = {
       ...file,
       download_url: `${getHostDomain()}/api/v1/files/${file.id}/download`,

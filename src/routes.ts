@@ -4,8 +4,9 @@ import uploadController from './controllers/upload';
 import { fileRequestValidation } from './middlewares/fileRequestValidation';
 import filesController from './controllers/files';
 
+// Todas Rotas da API
 export function generateRoutes(server: Express) {
-  server.get('/', homeController.GET);
+  server.get('/api/v1', homeController.GET);
   server.post('/api/v1/upload', fileRequestValidation, uploadController.POST);
   server.get('/api/v1/files', filesController.GetAll);
   server.get('/api/v1/files/:id', filesController.GetId);

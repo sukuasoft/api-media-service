@@ -48,3 +48,5 @@ Permite rodar o projecto totalmente otimizado para ambiente de produção com to
 ## 3. Formatação
 O projecto utiliza o prettier para formatação do código podes facilmente antes de todo commit rodar o comando `npm run format` para poder formatar o projecto para configuraçōes do prettier.
 
+## 4. Documentação
+A documentação da API pode ser acessada por meio do endereço localhost e porta defina na variável de ambiente. Ex: [http://localhost:5533](http://localhost:5533)
