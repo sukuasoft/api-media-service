@@ -6,11 +6,10 @@
     "description": "API backend que permite o upload de arquivos de vídeo e áudio,realiza o processamento básico desses arquivos e fornece uma interface para acessar os resultados do processamento."
   },
   "paths": {
-
     "/api/v1": {
       "get": {
         "summary": "Rota inicial da API",
-      
+
         "responses": {
           "200": {
             "description": "Rota inicial da API",
@@ -18,7 +17,7 @@
               "application/json": {
                 "example": {
                   "sucess": true,
-      
+
                   "message": "API Server running..."
                 }
               }
@@ -26,7 +25,7 @@
           }
         }
       }
-    }, 
+    },
     "/api/v1/upload": {
       "post": {
         "summary": "Carregar mídia",
@@ -62,12 +61,12 @@
           }
         }
       }
-    }, 
+    },
 
     "/api/v1/files": {
       "get": {
         "summary": "Pegar todos ficheiros carregados",
-      
+
         "responses": {
           "200": {
             "description": "Ficheiro carregado",
@@ -75,39 +74,40 @@
               "application/json": {
                 "example": {
                   "sucess": true,
-      
-                  "data":[
+
+                  "data": [
                     {
-                        "id": "a8ab667c-149d-4970-887e-ce83056aabfd",
-                        "name": "Oruam – Rolé na Favela de Nave (feat. Didi,Dj Lc da Roça,MC K9,MC Smith).mp3",
-                        "type": "audio",
-                        "size": 5858200,
-                        "duration": 193.044898,
-                        "mimetype": "audio/mpeg",
-                        "createdAt": "2024-12-02T19:27:09.374Z",
-                        "download_url": "http://localhost:5533/api/v1/files/a8ab667c-149d-4970-887e-ce83056aabfd/download",
-                        "short_file": "http://localhost:5533/api/v1/files/a8ab667c-149d-4970-887e-ce83056aabfd/short_file",
-                        "file_converted": "http://localhost:5533/api/v1/files/a8ab667c-149d-4970-887e-ce83056aabfd/converted"
+                      "id": "a8ab667c-149d-4970-887e-ce83056aabfd",
+                      "name": "Oruam – Rolé na Favela de Nave (feat. Didi,Dj Lc da Roça,MC K9,MC Smith).mp3",
+                      "type": "audio",
+                      "size": 5858200,
+                      "duration": 193.044898,
+                      "mimetype": "audio/mpeg",
+                      "createdAt": "2024-12-02T19:27:09.374Z",
+                      "download_url": "http://localhost:5533/api/v1/files/a8ab667c-149d-4970-887e-ce83056aabfd/download",
+                      "short_file": "http://localhost:5533/api/v1/files/a8ab667c-149d-4970-887e-ce83056aabfd/short_file",
+                      "file_converted": "http://localhost:5533/api/v1/files/a8ab667c-149d-4970-887e-ce83056aabfd/converted"
                     },
                     {
-                        "id": "86ea1333-bc62-4995-9c24-79b5788b01d5",
-                        "name": "Cópia de Nome.mp4",
-                        "type": "video",
-                        "size": 553683,
-                        "duration": 5,
-                        "mimetype": "video/mp4",
-                        "createdAt": "2024-12-02T19:28:15.440Z",
-                        "download_url": "http://localhost:5533/api/v1/files/86ea1333-bc62-4995-9c24-79b5788b01d5/download",
-                        "short_file": "http://localhost:5533/api/v1/files/86ea1333-bc62-4995-9c24-79b5788b01d5/short_file",
-                        "thumbnail": "http://localhost:5533/api/v1/files/86ea1333-bc62-4995-9c24-79b5788b01d5/thumbnail"
-                    }]
+                      "id": "86ea1333-bc62-4995-9c24-79b5788b01d5",
+                      "name": "Cópia de Nome.mp4",
+                      "type": "video",
+                      "size": 553683,
+                      "duration": 5,
+                      "mimetype": "video/mp4",
+                      "createdAt": "2024-12-02T19:28:15.440Z",
+                      "download_url": "http://localhost:5533/api/v1/files/86ea1333-bc62-4995-9c24-79b5788b01d5/download",
+                      "short_file": "http://localhost:5533/api/v1/files/86ea1333-bc62-4995-9c24-79b5788b01d5/short_file",
+                      "thumbnail": "http://localhost:5533/api/v1/files/86ea1333-bc62-4995-9c24-79b5788b01d5/thumbnail"
+                    }
+                  ]
                 }
               }
             }
           }
         }
       }
-    }, 
+    },
 
     "/api/v1/files/{id}": {
       "get": {
@@ -122,8 +122,9 @@
             "schema": {
               "type": "string"
             }
-          }],
-      
+          }
+        ],
+
         "responses": {
           "200": {
             "description": "Ficheiro carregado",
@@ -131,28 +132,26 @@
               "application/json": {
                 "example": {
                   "sucess": true,
-      
-                  "data":
-                    {
-                        "id": "a8ab667c-149d-4970-887e-ce83056aabfd",
-                        "name": "Oruam – Rolé na Favela de Nave (feat. Didi,Dj Lc da Roça,MC K9,MC Smith).mp3",
-                        "type": "audio",
-                        "size": 5858200,
-                        "duration": 193.044898,
-                        "mimetype": "audio/mpeg",
-                        "createdAt": "2024-12-02T19:27:09.374Z",
-                        "download_url": "http://localhost:5533/api/v1/files/a8ab667c-149d-4970-887e-ce83056aabfd/download",
-                        "short_file": "http://localhost:5533/api/v1/files/a8ab667c-149d-4970-887e-ce83056aabfd/short_file",
-                        "file_converted": "http://localhost:5533/api/v1/files/a8ab667c-149d-4970-887e-ce83056aabfd/converted"
-                    }
-                 
+
+                  "data": {
+                    "id": "a8ab667c-149d-4970-887e-ce83056aabfd",
+                    "name": "Oruam – Rolé na Favela de Nave (feat. Didi,Dj Lc da Roça,MC K9,MC Smith).mp3",
+                    "type": "audio",
+                    "size": 5858200,
+                    "duration": 193.044898,
+                    "mimetype": "audio/mpeg",
+                    "createdAt": "2024-12-02T19:27:09.374Z",
+                    "download_url": "http://localhost:5533/api/v1/files/a8ab667c-149d-4970-887e-ce83056aabfd/download",
+                    "short_file": "http://localhost:5533/api/v1/files/a8ab667c-149d-4970-887e-ce83056aabfd/short_file",
+                    "file_converted": "http://localhost:5533/api/v1/files/a8ab667c-149d-4970-887e-ce83056aabfd/converted"
+                  }
                 }
               }
             }
           }
         }
       }
-    }, 
+    },
 
     "/api/v1/files/{id}/thumbnail": {
       "get": {
@@ -167,20 +166,19 @@
             "schema": {
               "type": "string"
             }
-          }],
-      
+          }
+        ],
+
         "responses": {
           "200": {
             "description": "Thumbnail do Ficheiro carregado",
             "content": {
-              "image/jpeg": {
-                
-              }
+              "image/jpeg": {}
             }
           }
         }
       }
-    }, 
+    },
 
     "/api/v1/files/{id}/download": {
       "get": {
@@ -195,20 +193,19 @@
             "schema": {
               "type": "string"
             }
-          }],
-      
+          }
+        ],
+
         "responses": {
           "200": {
             "description": "Baixar Ficheiro carregado",
             "content": {
-              "application/octet-stream": {
-                
-              }
+              "application/octet-stream": {}
             }
           }
         }
       }
-    }, 
+    },
 
     "/api/v1/files/{id}/converted": {
       "get": {
@@ -223,20 +220,19 @@
             "schema": {
               "type": "string"
             }
-          }],
-      
+          }
+        ],
+
         "responses": {
           "200": {
             "description": "Baixar ficheiro convertido",
             "content": {
-              "application/octet-stream": {
-                
-              }
+              "application/octet-stream": {}
             }
           }
         }
       }
-    }, 
+    },
 
     "/api/v1/files/{id}/short_file": {
       "get": {
@@ -251,15 +247,14 @@
             "schema": {
               "type": "string"
             }
-          }],
-      
+          }
+        ],
+
         "responses": {
           "200": {
             "description": "Baixar ficheiro curto",
             "content": {
-              "application/octet-stream": {
-                
-              }
+              "application/octet-stream": {}
             }
           }
         }
