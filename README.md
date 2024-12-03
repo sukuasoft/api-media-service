@@ -63,7 +63,13 @@ A documentação da API pode ser acessada por meio do endereço localhost e port
 
 ## 5. Exemplos de uso
 
-#### 1. Rota Inicial da API
+#### 1. Rota Interface Inicial
+**Método:** `GET`  
+**URL:** `/`  
+
+![Screenshot Interface Inicial](/public/assets/screenshots/home.png)
+
+#### 2. Rota Inicial da API
 **Método:** `GET`  
 **URL:** `/api/v1`
 
@@ -75,7 +81,7 @@ A documentação da API pode ser acessada por meio do endereço localhost e port
 }
 ```
 
-#### 2. Carregar Mídia
+#### 3. Carregar Mídia
 **Método:** `POST`  
 **URL:** `/api/v1/upload`
 
@@ -99,7 +105,7 @@ Content-Type: multipart/form-data
 ```
 
 
-#### 3. Pegar Todos Ficheiros Carregados
+#### 4. Pegar Todos Ficheiros Carregados
 **Método:** `GET`  
 **URL:** `/api/v1/files`
 
@@ -137,7 +143,7 @@ Content-Type: multipart/form-data
 ```
 
 
-#### 4. Pegar Ficheiro Carregado
+#### 5. Pegar Ficheiro Carregado
 **Método:** `GET`  
 **URL:** `/api/v1/files/{id}`
 
@@ -163,7 +169,7 @@ Content-Type: multipart/form-data
 }
 ```
 
-#### 5. Pegar Thumbnail do Ficheiro Carregado
+#### 6. Pegar Thumbnail do Ficheiro Carregado
 **Método:** `GET`  
 **URL:** `/api/v1/files/{id}/thumbnail`
 
@@ -173,7 +179,7 @@ Content-Type: multipart/form-data
 #### Resposta Exemplo
 - Binary File
 
-#### 6. Baixar Ficheiro Carregado
+#### 7. Baixar Ficheiro Carregado
 **Método:** `GET`  
 **URL:** `/api/v1/files/{id}/download`
 
@@ -183,7 +189,7 @@ Content-Type: multipart/form-data
 #### Resposta Exemplo
 - Binary File
 
-#### 7. Baixar Ficheiro Convertido
+#### 8. Baixar Ficheiro Convertido
 **Método:** `GET`  
 **URL:** `/api/v1/files/{id}/converted`
 
@@ -193,7 +199,7 @@ Content-Type: multipart/form-data
 #### Resposta Exemplo
 - Binary File
 
-#### 8. Baixar Ficheiro Curto
+#### 9. Baixar Ficheiro Curto
 **Método:** `GET`  
 **URL:** `/api/v1/files/{id}/short_file`
 
