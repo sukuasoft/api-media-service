@@ -7,7 +7,7 @@ export function initServer() {
 
   const server: Express = express();
   server.use(fileUpload());
-
+  
   generateRoutes(server);
 
   server.listen(PORT, () => {
